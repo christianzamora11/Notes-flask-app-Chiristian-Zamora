@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script defer src="/static/script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>My Notes            </h1>
+        <form action="/add" method="POST" class="add-form">
+            <input type="text" name="note" placeholder="Write a note..." required>
+            <button type="submit">Add</button>
+        </form>
+        <ul id="notes-list">
+            {% for note in notes %}
+            <li>
+                <span class="note-text">{{ note }}</span>
+                <a href="/delete/{{ loop.index0 }}" class="delete-btn">Delete</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
